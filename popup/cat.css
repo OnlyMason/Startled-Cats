@@ -1,6 +1,11 @@
 /* stuff */
 
-img.catPic {
+img {
+	max-height: 500px;
+	max-width: 500px;
+}
+
+video {
 	max-height: 500px;
 	max-width: 500px;
 }

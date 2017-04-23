@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Startled Cats",
-  "version": "1.2",
-  "description": "Pics or videos of cats getting startled.  Have a laugh.",
+  "name": "Random Cats",
+  "version": "1.3.1",
+  "description": "Pics or videos of cats at the push of a button.  Have a laugh.",
 
   "applications": {
 	  "gecko": {
