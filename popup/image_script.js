@@ -1,6 +1,9 @@
 var URL = "https://api.imgur.com/3/gallery/r/startledcats+catgifs/";
 var ID = "4a2515bbf9e3304";
 
+// when we get our response, copy array data to this variable
+var imageArray = undefined;
+
 function request() {
 	var req = new XMLHttpRequest();  
 	req.open("GET", URL, true); // true for asynchronous  
@@ -17,24 +20,29 @@ function request() {
 
 function process(response_text) {
 	var images = JSON.parse(response_text);
-	var rand = Math.floor(Math.random() * (images.data.length));	
+	imageArray = images.data;
+	getAndSet();
+}
+
+function getAndSet() {
+	var rand = Math.floor(Math.random() * (imageArray.length));	
 	
 	// can't use albums
-	if (images.data[rand].is_album) {
+	if (imageArray[rand].is_album) {
 		var foundNew = false;
 		while (!foundNew) {
-			rand = Math.floor(Math.random() * (images.data.length));
-			if (!images.data[rand].is_album)
+			rand = Math.floor(Math.random() * (imageArray.length));
+			if (!imageArray[rand].is_album)
 				foundNew = true;
 		}
 	}
 	
-	if(images.data[rand].type == "image/gif") {
-		var imageURL = images.data[rand].mp4;
+	if(imageArray[rand].type == "image/gif") {
+		var imageURL = imageArray[rand].mp4;
 		setVideo(imageURL);
 	}
 	else {
-		var imageURL = images.data[rand].link;
+		var imageURL = imageArray[rand].link;
 		setPic(imageURL);
 	}
 }
@@ -64,7 +72,7 @@ function removeEverything() {
 }
 
 document.addEventListener("click", function() {
-	request();
+	getAndSet();
 });
 
 request();
