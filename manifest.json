@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Startled Cats",
+  "version": "1.2",
+  "description": "Pics or videos of cats getting startled.  Have a laugh.",
+
+  "applications": {
+	  "gecko": {
+		"id": "{f82cbc08-ccb2-4adb-b2ec-f72310650602}",
+		"strict_min_version": "42.0"
+	  }
+  },
+  
+  "browser_action": {
+    "browser_style": true,
+	"default_title": "Startled Cats",
+    "default_popup": "popup/cat.html",
+    "default_icon": {
+      "48": "icons/icon.png"
+    }
+  }
+}
