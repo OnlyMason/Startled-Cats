@@ -1,11 +1,6 @@
 /* stuff */
 
-img {
-	max-height: 500px;
-	max-width: 500px;
-}
-
-video {
+img, video {
 	max-height: 500px;
 	max-width: 500px;
 }

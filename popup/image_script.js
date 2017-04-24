@@ -1,4 +1,5 @@
-var URL = "https://api.imgur.com/3/gallery/r/startledcats+catgifs/";
+var rand = Math.floor(Math.random() * 10);	
+var URL = "https://api.imgur.com/3/gallery/r/startledcats+catgifs/" + rand + "/";
 var ID = "4a2515bbf9e3304";
 
 // when we get our response, copy array data to this variable
@@ -24,8 +25,8 @@ function process(response_text) {
 	getAndSet();
 }
 
-function getAndSet() {
-	var rand = Math.floor(Math.random() * (imageArray.length));	
+function getAndSet() {	
+	rand = Math.floor(Math.random() * (imageArray.length));	
 	
 	// can't use albums
 	if (imageArray[rand].is_album) {
@@ -37,7 +38,8 @@ function getAndSet() {
 		}
 	}
 	
-	if(imageArray[rand].type == "image/gif") {
+	removeEverything();
+	if (imageArray[rand].type == "image/gif") {
 		var imageURL = imageArray[rand].mp4;
 		setVideo(imageURL);
 	}
@@ -48,15 +50,13 @@ function getAndSet() {
 }
 
 function setPic(addr) {
-	removeEverything();
 	var catPic = document.createElement("img");
-	catPic.setAttribute("src", addr);
+	catPic.src = addr;
 	document.body.appendChild(catPic);
 }  
 
 
 function setVideo(addr) {
-	removeEverything();
 	var catVid = document.createElement("video");
 	catVid.src = addr;
 	catVid.type = "video/mp4";
